@@ -1,0 +1,21 @@
+.container {
+  margin: 20px;
+}
+
+.title {
+  font-size: 1.3rem;
+}
+
+.infoStrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  order: 1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+}
