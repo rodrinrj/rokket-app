@@ -6,7 +6,7 @@ interface BooksInfoProps {
 
 const BooksInfo: React.FC<BooksInfoProps> = ({ amount }) => {
   return (
-    <div>
+    <div data-testid="booksInfo">
       {amount} {amount !== 1 ? "libros agregados" : "libro agregado"}
     </div>
   );

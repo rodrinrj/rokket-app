@@ -4,7 +4,6 @@ import { showNetworkError } from "../../../helpers/notifications.helper";
 import { ActionCreator } from "../../../redux-store/actions";
 import { Book } from "../models/Book";
 import { Filter } from "../models/Filter";
-import { BookFilters } from "../../../redux-store/filter/Filter.actions";
 
 export const fetchBooks = (dispatch: Dispatch<any>) =>
   Api.fetchBooks()
@@ -28,23 +27,3 @@ export const updateBook = (dispatch: Dispatch<any>, book: Book) =>
 
 export const setFilter = (dispatch: Dispatch<any>, filter: Filter) =>
   dispatch(ActionCreator.setFilter(filter));
-
-export const getFilteredBooks = (books: Book[], filter: Filter): Book[] => {
-  switch (filter.value) {
-    case BookFilters.ALL_BOOKS_FILTER: {
-      return books;
-    }
-    case BookFilters.FINISHED_FILTER: {
-      return books.filter((book) => book.state === "finished");
-    }
-    case BookFilters.READING_FILTER: {
-      return books.filter((book) => book.state === "reading");
-    }
-    case BookFilters.WISHING_FILTER: {
-      return books.filter((book) => book.state === "wishing");
-    }
-    default: {
-      return books;
-    }
-  }
-};

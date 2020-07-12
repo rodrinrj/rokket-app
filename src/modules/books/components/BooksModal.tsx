@@ -9,7 +9,6 @@ interface BooksModalProps {
   book?: Book;
   onCreate: (values: any) => void;
   onCancel: () => void;
-  okText: string;
 }
 
 const BooksModal: React.FC<BooksModalProps> = ({
@@ -17,15 +16,15 @@ const BooksModal: React.FC<BooksModalProps> = ({
   book,
   onCreate,
   onCancel,
-  okText,
 }) => {
   const [form] = Form.useForm();
 
   return (
     <Modal
+      data-testid="bookModal"
       title={book ? "Modificar libro" : "Agregar nuevo libro"}
       visible={visible}
-      okText={okText}
+      okText={book ? "Guardar" : "Crear"}
       cancelText="Cancelar"
       onOk={() => {
         form

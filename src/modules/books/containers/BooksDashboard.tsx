@@ -14,7 +14,7 @@ import {
   setFilter,
   deleteBook,
   updateBook,
-} from "../services/books.service";
+} from "../services/bookStore.service";
 
 const styles = require("./BooksDashboard.module.scss");
 
@@ -56,12 +56,21 @@ const BooksDashboard: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Libros</h1>
-      <div className={styles.infoStrip}>
-        <BooksInfo amount={books.length} />
-        <div className={styles.buttons}>
-          <SelectFilter filter={filter} onChange={handleFilterChange} />
-          <CreateBookButton onClick={() => setCreateModalVisible(true)} />
+      <h1 data-testid="pageTitle" className={styles.title}>
+        Libros
+      </h1>
+      <div data-testid="actionStrip" className={styles.infoStrip}>
+        <BooksInfo data-testid="booksInfo" amount={books.length} />
+        <div data-testid="actionButtons" className={styles.buttons}>
+          <SelectFilter
+            data-testid="filterSelector"
+            filter={filter}
+            onChange={handleFilterChange}
+          />
+          <CreateBookButton
+            data-testid="createBookButton"
+            onClick={() => setCreateModalVisible(true)}
+          />
         </div>
       </div>
       <BooksTable
@@ -77,14 +86,12 @@ const BooksDashboard: React.FC = () => {
         visible={createModalVisible}
         onCreate={handleCreateModal}
         onCancel={() => setCreateModalVisible(false)}
-        okText="Crear"
       />
       <BooksModal
         visible={updateModalVisible}
         book={formData}
         onCreate={handleUpdateModal}
         onCancel={() => setUpdateModalVisible(false)}
-        okText="Guardar"
       />
     </div>
   );

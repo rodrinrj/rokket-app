@@ -2,7 +2,7 @@ import { Dropdown, Menu, Table } from "antd";
 import React from "react";
 import { Book } from "../models/Book";
 import { Filter } from "../models/Filter";
-import { getFilteredBooks } from "../services/books.service";
+import { getFilteredBooks, convertState } from "../services/booksTable.service";
 
 const styles = require("./BooksTable.module.scss");
 
@@ -21,17 +21,6 @@ const BooksTable: React.FC<BooksTableProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const convertState = (state: string) => {
-    switch (state) {
-      case "reading":
-        return "Leyendo";
-      case "wishing":
-        return "Por leer";
-      case "finished":
-        return "Finalizado";
-    }
-  };
-
   return (
     <Table
       className={styles.booksTable}
@@ -39,6 +28,7 @@ const BooksTable: React.FC<BooksTableProps> = ({
       title={() => filter.title}
       bordered
       pagination={false}
+      rowKey="_id"
     >
       <Column
         title="Título"

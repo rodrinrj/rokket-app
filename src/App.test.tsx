@@ -1,9 +1,16 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { mount } from "enzyme";
+import { act } from "react-dom/test-utils";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const wrapper = () => <App />;
+
+describe("AppComponent", () => {
+  let component: any;
+  act(() => {
+    component = mount(wrapper());
+  });
+  test("should render without crashing", () => {
+    expect(component).toBeTruthy();
+  });
 });

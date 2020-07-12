@@ -7,7 +7,7 @@ interface ButtonProps {
 
 const CreateBookButton: React.FC<ButtonProps> = ({ onClick: handleClick }) => {
   return (
-    <Button onClick={handleClick} type="primary">
+    <Button data-testid="createBookButton" onClick={handleClick} type="primary">
       Agregar libro
     </Button>
   );
