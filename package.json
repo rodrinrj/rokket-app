@@ -29,6 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "compose": "docker-compose up -d",
+    "compose:dev": "docker-compose -f docker-compose.api.yml up -d",
     "compose:b": "docker-compose up -d --build",
     "compose:bf": "docker-compose build frontend && yarn compose",
     "compose:bb": "docker-compose build backend && yarn compose",

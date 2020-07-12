@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ../rokket-api
+      dockerfile: Dockerfile
+    image: rokket-api
+    container_name: rokket-api
+    restart: always
+    expose:
+      - "8080"
+    environment:
+      - ROKKET_DB_HOST=mongo
+      - ROKKET_DB_PORT=27017
+
+  mongo:
+    image: mongo
+    container_name: rokket-db
+    expose:
+      - "27017"
+
+  frontend:
+    build: .
+    image: rokket-app
+    container_name: rokket-app
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
